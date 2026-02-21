@@ -1,0 +1,4 @@
+id,timestamp,symbol,price,severity,z_score,detection_method,confidence,created_at
+1,2026-02-22 10:01:00,AAPL,175.5,5.2,5.2,zscore,85.0,2026-02-21 20:07:49
+2,2026-02-22 10:01:00,AAPL,175.5,5.2,5.2,zscore,85.0,2026-02-21 20:10:31
+3,2026-02-22 10:01:00,AAPL,175.5,5.2,5.2,zscore,85.0,2026-02-21 20:12:34
