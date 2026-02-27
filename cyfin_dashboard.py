@@ -35,74 +35,78 @@ st.set_page_config(
 )
 
 # ══════════════════════════════════════════════════════════════════
-# Google-Inspired Light Theme CSS
+# Innovative Dark Theme CSS (Black & Blue)
 # ══════════════════════════════════════════════════════════════════
 
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
 
     /* ── Reset & Base ─────────────────────────────────── */
     html, body, [class*="css"] {
-        font-family: 'Roboto', 'Google Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-        color: #202124;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        color: #E2E8F0;
     }
     .main .block-container {
         padding: 1.5rem 2rem 2rem 2rem;
-        max-width: 1380px;
+        max-width: 1440px;
     }
     .stApp {
-        background-color: #f8f9fa;
+        background: radial-gradient(circle at top right, #0F172A, #020617);
+        background-attachment: fixed;
     }
 
     /* ── Sidebar ──────────────────────────────────────── */
     section[data-testid="stSidebar"] {
-        background-color: #ffffff;
-        border-right: 1px solid #e0e0e0;
+        background-color: rgba(15, 23, 42, 0.8) !important;
+        backdrop-filter: blur(20px);
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
     }
     section[data-testid="stSidebar"] .stMarkdown p,
     section[data-testid="stSidebar"] .stMarkdown h3,
     section[data-testid="stSidebar"] .stMarkdown h5 {
-        color: #3c4043;
+        color: #94A3B8;
     }
     section[data-testid="stSidebar"] hr {
-        border-color: #e8eaed;
+        border-color: rgba(255, 255, 255, 0.1);
     }
 
     /* ── Header ───────────────────────────────────────── */
     .app-header {
-        background: #ffffff;
-        border-radius: 12px;
-        padding: 1.25rem 1.75rem;
-        margin-bottom: 1rem;
+        background: rgba(30, 41, 59, 0.5);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 1.5rem 2rem;
+        margin-bottom: 1.5rem;
         display: flex;
         align-items: center;
-        gap: 1rem;
-        box-shadow: 0 1px 3px rgba(60,64,67,0.08), 0 1px 2px rgba(60,64,67,0.04);
+        gap: 1.25rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
     .app-header .logo {
-        width: 40px;
-        height: 40px;
-        background: #1a73e8;
-        border-radius: 10px;
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+        border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.3rem;
-        flex-shrink: 0;
+        font-size: 1.5rem;
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
     }
     .app-header .title-block h1 {
-        font-family: 'Google Sans', 'Roboto', sans-serif;
-        font-size: 1.35rem;
-        font-weight: 500;
-        color: #202124;
+        font-family: 'Outfit', sans-serif;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #FFFFFF;
         margin: 0;
-        letter-spacing: -0.2px;
+        letter-spacing: -0.5px;
     }
     .app-header .title-block .tagline {
-        font-size: 0.78rem;
-        color: #5f6368;
-        margin-top: 0.15rem;
+        font-size: 0.85rem;
+        color: #94A3B8;
+        margin-top: 0.25rem;
         font-weight: 400;
     }
 
@@ -110,196 +114,223 @@ st.markdown("""
     .kpi-grid {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
-        gap: 0.75rem;
-        margin-bottom: 0.75rem;
+        gap: 1rem;
+        margin-bottom: 1rem;
     }
     .kpi-card {
-        background: #ffffff;
-        border-radius: 12px;
-        padding: 1rem 1.15rem;
-        box-shadow: 0 1px 3px rgba(60,64,67,0.08), 0 1px 2px rgba(60,64,67,0.04);
-        transition: box-shadow 0.2s ease;
+        background: rgba(30, 41, 59, 0.4);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 1.25rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .kpi-card:hover {
-        box-shadow: 0 2px 6px rgba(60,64,67,0.15), 0 1px 3px rgba(60,64,67,0.08);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        border-color: rgba(59, 130, 246, 0.3);
     }
     .kpi-label {
-        font-size: 0.68rem;
-        font-weight: 500;
-        color: #5f6368;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #94A3B8;
         text-transform: uppercase;
-        letter-spacing: 0.6px;
-        margin-bottom: 0.35rem;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
     }
     .kpi-value {
-        font-family: 'Google Sans', 'Roboto', sans-serif;
-        font-size: 1.75rem;
-        font-weight: 500;
-        line-height: 1.15;
-        letter-spacing: -0.5px;
+        font-family: 'Outfit', sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1.1;
+        color: #F8FAFC;
     }
     .kpi-sub {
-        font-size: 0.7rem;
-        color: #80868b;
-        margin-top: 0.2rem;
+        font-size: 0.75rem;
+        color: #64748B;
+        margin-top: 0.4rem;
         font-weight: 400;
     }
 
-    /* ── Color Tokens (Google-style) ──────────────────── */
-    .g-blue    { color: #1a73e8; }
-    .g-green   { color: #1e8e3e; }
-    .g-yellow  { color: #f9ab00; }
-    .g-orange  { color: #e8710a; }
-    .g-red     { color: #d93025; }
-    .g-teal    { color: #007b83; }
-    .g-gray    { color: #5f6368; }
+    /* ── Colors ───────────────────────────────────────── */
+    .g-blue    { color: #60A5FA; }
+    .g-green   { color: #34D399; }
+    .g-yellow  { color: #FBBF24; }
+    .g-orange  { color: #FB923C; }
+    .g-red     { color: #F87171; }
+    .g-teal    { color: #2DD4BF; }
+    .g-gray    { color: #94A3B8; }
 
     /* ── Tier Chips ───────────────────────────────────── */
     .tier-chip {
         display: inline-flex;
         align-items: center;
-        gap: 0.3rem;
-        padding: 0.3rem 0.75rem;
-        border-radius: 16px;
-        font-size: 0.7rem;
-        font-weight: 500;
-        letter-spacing: 0.3px;
+        gap: 0.4rem;
+        padding: 0.4rem 0.9rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.2px;
     }
-    .chip-normal   { background: #e6f4ea; color: #1e8e3e; }
-    .chip-elevated { background: #fef7e0; color: #e37400; }
-    .chip-high     { background: #fce8e6; color: #c5221f; }
-    .chip-crisis   { background: #d93025; color: #ffffff; }
+    .chip-normal   { background: rgba(16, 185, 129, 0.1); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.2); }
+    .chip-elevated { background: rgba(245, 158, 11, 0.1); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.2); }
+    .chip-high     { background: rgba(239, 68, 68, 0.1); color: #F87171; border: 1px solid rgba(239, 68, 68, 0.2); }
+    .chip-crisis   { background: #EF4444; color: #FFFFFF; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
 
     /* ── Section Label ────────────────────────────────── */
     .section-label {
-        font-family: 'Google Sans', 'Roboto', sans-serif;
-        font-size: 0.72rem;
-        font-weight: 500;
-        color: #5f6368;
+        font-family: 'Outfit', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #94A3B8;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        margin: 1.25rem 0 0.6rem 0.1rem;
+        letter-spacing: 1.5px;
+        margin: 1.5rem 0 1rem 0;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    .section-label::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.1), transparent);
     }
 
-    /* ── Cards ────────────────────────────────────────── */
+    /* ── Glass Cards ──────────────────────────────────── */
     .g-card {
-        background: #ffffff;
-        border-radius: 12px;
-        padding: 1.15rem 1.25rem;
-        box-shadow: 0 1px 3px rgba(60,64,67,0.08), 0 1px 2px rgba(60,64,67,0.04);
+        background: rgba(15, 23, 42, 0.4);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        border-radius: 20px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
 
     /* ── Pipeline Grid ────────────────────────────────── */
     .pipe-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 0.4rem;
+        gap: 0.6rem;
     }
     .pipe-item {
-        background: #ffffff;
-        border: 1px solid #e8eaed;
-        border-left: 3px solid #1e8e3e;
-        border-radius: 8px;
-        padding: 0.5rem 0.75rem;
-        font-size: 0.75rem;
-        color: #3c4043;
+        background: rgba(30, 41, 59, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-left: 4px solid #3B82F6;
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        font-size: 0.8rem;
+        color: #CBD5E1;
     }
-    .pipe-item b { color: #202124; }
+    .pipe-item b { color: #FFFFFF; }
 
     /* ── Incident Panel ───────────────────────────────── */
     .incident-panel {
-        background: #fce8e6;
-        border: 1px solid #f5c6c2;
-        border-radius: 12px;
-        padding: 1rem 1.2rem;
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+        border-radius: 16px;
+        padding: 1.25rem;
+        position: relative;
+        overflow: hidden;
+    }
+    .incident-panel::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; width: 4px; height: 100%;
+        background: #F87171;
     }
     .incident-panel .inc-title {
-        font-family: 'Google Sans', sans-serif;
-        color: #c5221f;
-        font-weight: 500;
-        font-size: 0.85rem;
+        font-family: 'Outfit', sans-serif;
+        color: #F87171;
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
     }
     .incident-panel .inc-detail {
-        color: #5f6368;
-        font-size: 0.75rem;
-        margin-top: 0.35rem;
-        line-height: 1.7;
-    }
-
-    /* ── Stress Row ───────────────────────────────────── */
-    .stress-row {
-        background: #ffffff;
-        border: 1px solid #e8eaed;
-        border-radius: 10px;
-        padding: 0.75rem 1rem;
-        margin: 0.3rem 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        transition: background 0.15s;
-    }
-    .stress-row:hover { background: #f8f9fa; }
-    .stress-row .sr-name {
-        font-family: 'Google Sans', sans-serif;
-        color: #202124;
-        font-weight: 500;
-        font-size: 0.82rem;
-    }
-    .stress-row .sr-detail { color: #80868b; font-size: 0.72rem; }
-
-    /* ── Welcome Cards ────────────────────────────────── */
-    .welcome-card {
-        background: #ffffff;
-        border-radius: 12px;
-        padding: 1.5rem;
-        box-shadow: 0 1px 3px rgba(60,64,67,0.08), 0 1px 2px rgba(60,64,67,0.04);
-        height: 100%;
-    }
-    .welcome-card .wc-title {
-        font-family: 'Google Sans', sans-serif;
-        font-size: 0.95rem;
-        font-weight: 500;
-        color: #1a73e8;
-        margin-bottom: 0.75rem;
-    }
-    .welcome-card .wc-body {
+        color: #94A3B8;
         font-size: 0.8rem;
-        color: #5f6368;
-        line-height: 2;
+        margin-top: 0.5rem;
+        line-height: 1.6;
     }
-    .welcome-card .wc-body b { color: #1a73e8; }
-    .welcome-card .wc-body .teal { color: #007b83; }
-    .welcome-card .wc-body .purple { color: #7c4dff; }
-    .welcome-card .wc-body .red { color: #d93025; }
+
+    /* ── Buttons ──────────────────────────────────────── */
+    div.stButton > button:first-child {
+        background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+        color: white;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 12px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 6px rgba(30, 64, 175, 0.2);
+        width: 100%;
+    }
+    div.stButton > button:first-child:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 15px rgba(30, 64, 175, 0.4);
+        background: linear-gradient(135deg, #60A5FA, #2563EB);
+    }
+    div.stButton > button:first-child:active {
+        transform: translateY(0);
+    }
+
+    /* ── Custom Select/Inputs ─────────────────────────── */
+    .stSelectbox, .stMultiSelect {
+        border-radius: 12px;
+    }
 
     /* ── Tabs ─────────────────────────────────────────── */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 0.15rem;
-        border-bottom: 2px solid #e8eaed;
+        gap: 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding-bottom: 0.5rem;
     }
     .stTabs [data-baseweb="tab"] {
-        font-family: 'Google Sans', sans-serif;
+        font-family: 'Outfit', sans-serif;
         font-weight: 500;
-        font-size: 0.82rem;
-        color: #5f6368;
-        padding: 0.55rem 1rem;
-        border-radius: 0;
+        font-size: 0.9rem;
+        color: #64748B;
+        padding: 0.5rem 0.25rem;
+        background: transparent !important;
+        border: none !important;
     }
     .stTabs [data-baseweb="tab"][aria-selected="true"] {
-        color: #1a73e8;
+        color: #3B82F6 !important;
+        border-bottom: 2px solid #3B82F6 !important;
     }
 
-    /* ── Misc ─────────────────────────────────────────── */
-    div[data-testid="stHorizontalBlock"] { gap: 0.75rem; }
-
-    /* ── Clean Up Streamlit Defaults ──────────────────── */
-    .stMetric label { color: #5f6368 !important; font-weight: 500 !important; }
-    .stMetric [data-testid="stMetricValue"] {
-        font-family: 'Google Sans', sans-serif !important;
-        color: #202124 !important;
+    /* ── Welcome Cards ────────────────────────────────── */
+    .welcome-card {
+        background: rgba(30, 41, 59, 0.4);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        padding: 2rem;
+        height: 100%;
     }
-    .stProgress > div > div > div > div { background: #1a73e8 !important; }
-    .stDataFrame { border-radius: 8px; overflow: hidden; }
+    .welcome-card .wc-title {
+        font-family: 'Outfit', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #3B82F6;
+        margin-bottom: 1rem;
+    }
+    .welcome-card .wc-body {
+        font-size: 0.9rem;
+        color: #94A3B8;
+        line-height: 1.8;
+    }
+    .welcome-card .wc-body b { color: #FFFFFF; }
+
+    /* ── Metrics Overrides ───────────────────────────── */
+    [data-testid="stMetric"] {
+        background: rgba(15, 23, 42, 0.3);
+        border-radius: 12px;
+        padding: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -308,49 +339,51 @@ st.markdown("""
 # Design Helpers
 # ══════════════════════════════════════════════════════════════════
 
-# Chart palette (Google-inspired, light backgrounds)
-G_BLUE   = "#1a73e8"
-G_GREEN  = "#1e8e3e"
-G_YELLOW = "#f9ab00"
-G_ORANGE = "#e8710a"
-G_RED    = "#d93025"
-G_TEAL   = "#007b83"
-G_PURPLE = "#7c4dff"
+# Chart palette (Vibrant, dark-themed)
+G_BLUE   = "#3B82F6"
+G_GREEN  = "#10B981"
+G_YELLOW = "#F59E0B"
+G_ORANGE = "#F97316"
+G_RED    = "#EF4444"
+G_TEAL   = "#14B8A6"
+G_PURPLE = "#8B5CF6"
 SERIES   = [G_BLUE, G_TEAL, G_ORANGE, G_RED, G_PURPLE, G_GREEN, G_YELLOW]
 
 
-def g_layout(title="", height=280, ml=50, mr=20, mt=36, mb=30, yrange=None):
-    """Google-style chart layout with white background."""
+def g_layout(title="", height=280, ml=50, mr=20, mt=40, mb=30, yrange=None):
+    """Innovative Dark Style chart layout."""
     layout = dict(
         title=dict(
             text=title,
-            font=dict(size=13, color="#3c4043", family="Google Sans, Roboto, sans-serif"),
-            x=0.01, y=0.97
+            font=dict(size=14, color="#F8FAFC", family="Outfit, Inter, sans-serif"),
+            x=0.01, y=0.98
         ),
-        paper_bgcolor="#ffffff",
-        plot_bgcolor="#ffffff",
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
         height=height,
         margin=dict(l=ml, r=mr, t=mt, b=mb),
         xaxis=dict(
-            gridcolor="#f1f3f4", tickfont=dict(color="#80868b", size=10),
-            title_font=dict(color="#5f6368", size=11),
-            zeroline=False, showline=True, linecolor="#e8eaed", linewidth=1,
+            gridcolor="rgba(255,255,255,0.05)",
+            tickfont=dict(color="#64748B", size=10),
+            title_font=dict(color="#94A3B8", size=11),
+            zeroline=False, showline=True, linecolor="rgba(255,255,255,0.1)", linewidth=1,
             mirror=False
         ),
         yaxis=dict(
-            gridcolor="#f1f3f4", tickfont=dict(color="#80868b", size=10),
-            title_font=dict(color="#5f6368", size=11),
+            gridcolor="rgba(255,255,255,0.05)",
+            tickfont=dict(color="#64748B", size=10),
+            title_font=dict(color="#94A3B8", size=11),
             zeroline=False, showline=False
         ),
         legend=dict(
-            font=dict(color="#5f6368", size=11, family="Roboto, sans-serif"),
-            bgcolor="rgba(255,255,255,0.9)", borderwidth=0
+            font=dict(color="#94A3B8", size=11, family="Inter, sans-serif"),
+            bgcolor="rgba(15,23,42,0.8)", borderwidth=0
         ),
         showlegend=False,
         hoverlabel=dict(
-            bgcolor="#ffffff", font_color="#202124",
-            bordercolor="#e8eaed", font_size=12,
-            font_family="Roboto, sans-serif"
+            bgcolor="#1E293B", font_color="#F8FAFC",
+            bordercolor="rgba(255,255,255,0.1)", font_size=12,
+            font_family="Inter, sans-serif"
         )
     )
     if yrange:
@@ -376,47 +409,47 @@ def tier_chip_class(tier):
     return m.get(tier, "chip-normal")
 
 def tier_icon(tier):
-    return {"NORMAL":"●","ELEVATED_RISK":"●","HIGH_VOLATILITY":"●","SYSTEMIC_CRISIS":"●"}.get(tier, "●")
+    return {"NORMAL":"󰄬","ELEVATED_RISK":"󰀪","HIGH_VOLATILITY":"󱈸","SYSTEMIC_CRISIS":"󰀦"}.get(tier, "●")
 
 def frag_color(f):
     return {"ROBUST": G_GREEN, "MODERATE_SENSITIVITY": G_YELLOW,
-            "FRAGILE": G_ORANGE, "CRISIS_PRONE": G_RED}.get(f, "#80868b")
+            "FRAGILE": G_ORANGE, "CRISIS_PRONE": G_RED}.get(f, "#64748B")
 
 
 def make_gauge(value):
-    """Google-style clean gauge."""
+    """Innovative Dark Style gauge."""
     color = msi_color(value)
     fig = go.Figure(go.Indicator(
         mode="gauge+number",
         value=value,
         number=dict(
-            font=dict(size=52, color=color, family="Google Sans, Roboto"),
+            font=dict(size=48, color=color, family="Outfit, Inter"),
             valueformat=".1f"
         ),
         gauge=dict(
             axis=dict(range=[0, 100], tickwidth=0, visible=False),
-            bar=dict(color=color, thickness=0.3),
-            bgcolor="#f1f3f4",
+            bar=dict(color=color, thickness=0.4),
+            bgcolor="rgba(255,255,255,0.05)",
             borderwidth=0,
+            pointer=dict(color=color, length=0.6),
             steps=[
-                dict(range=[0, 40], color="#fce8e6"),
-                dict(range=[40, 60], color="#fef7e0"),
-                dict(range=[60, 80], color="#e6f4ea"),
-                dict(range=[80, 100], color="#e6f4ea"),
+                dict(range=[0, 40], color="rgba(248,113,113,0.1)"),
+                dict(range=[40, 60], color="rgba(251,191,36,0.1)"),
+                dict(range=[60, 100], color="rgba(52,211,153,0.1)"),
             ],
             threshold=dict(
                 line=dict(color=color, width=2),
-                thickness=0.85, value=value
+                thickness=0.8, value=value
             )
         )
     ))
     fig.update_layout(
         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-        height=220, margin=dict(l=30, r=30, t=15, b=10),
+        height=200, margin=dict(l=30, r=30, t=10, b=10),
         annotations=[dict(
             text="Market Stability Index",
-            x=0.5, y=-0.05, showarrow=False,
-            font=dict(size=10, color="#5f6368", family="Google Sans"),
+            x=0.5, y=-0.1, showarrow=False,
+            font=dict(size=11, color="#94A3B8", family="Inter"),
             xref="paper", yref="paper"
         )]
     )
