@@ -25,42 +25,105 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
+# Innovative Dark Theme CSS (Black & Blue)
 st.markdown("""
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+    /* ── Reset & Base ─────────────────────────────────── */
+    html, body, [class*="css"] {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        color: #E2E8F0;
+    }
+    .stApp {
+        background: radial-gradient(circle at top right, #0F172A, #020617);
+        background-attachment: fixed;
+    }
+
+    /* ── Header ───────────────────────────────────────── */
     .main-header {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: #1f77b4;
+        font-family: 'Outfit', sans-serif;
+        font-size: 2.2rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #3B82F6, #60A5FA);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         text-align: center;
-        padding: 1rem;
+        padding: 1.5rem;
+        letter-spacing: -1px;
     }
-    .metric-card {
-        background-color: #f0f2f6;
-        padding: 1rem;
-        border-radius: 0.5rem;
-        margin: 0.5rem 0;
+
+    /* ── Sidebar ──────────────────────────────────────── */
+    section[data-testid="stSidebar"] {
+        background-color: rgba(15, 23, 42, 0.8) !important;
+        backdrop-filter: blur(20px);
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
     }
-    .alert-danger {
-        background-color: #ff4b4b;
+
+    /* ── Cards & Metrics ──────────────────────────────── */
+    [data-testid="stMetric"] {
+        background: rgba(30, 41, 59, 0.4);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 1.25rem;
+        transition: transform 0.2s ease;
+    }
+    [data-testid="stMetric"]:hover {
+        transform: translateY(-2px);
+        border-color: rgba(59, 130, 246, 0.3);
+    }
+
+    /* ── Buttons ──────────────────────────────────────── */
+    div.stButton > button:first-child {
+        background: linear-gradient(135deg, #3B82F6, #1D4ED8);
         color: white;
-        padding: 1rem;
-        border-radius: 0.5rem;
-        margin: 0.5rem 0;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 12px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 6px rgba(30, 64, 175, 0.2);
+    }
+    div.stButton > button:first-child:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 15px rgba(30, 64, 175, 0.4);
+        background: linear-gradient(135deg, #60A5FA, #2563EB);
+    }
+
+    /* ── Alerts ───────────────────────────────────────── */
+    .alert-danger {
+        background: rgba(239, 68, 68, 0.15);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        color: #F87171;
+        padding: 1.25rem;
+        border-radius: 16px;
+        margin: 1rem 0;
+        backdrop-filter: blur(8px);
     }
     .alert-warning {
-        background-color: #ffa500;
-        color: white;
-        padding: 1rem;
-        border-radius: 0.5rem;
-        margin: 0.5rem 0;
+        background: rgba(245, 158, 11, 0.15);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        color: #FBBF24;
+        padding: 1.25rem;
+        border-radius: 16px;
+        margin: 1rem 0;
     }
     .alert-success {
-        background-color: #00cc00;
-        color: white;
-        padding: 1rem;
-        border-radius: 0.5rem;
-        margin: 0.5rem 0;
+        background: rgba(16, 185, 129, 0.15);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        color: #34D399;
+        padding: 1.25rem;
+        border-radius: 16px;
+        margin: 1rem 0;
+    }
+    
+    /* ── Info Box ─────────────────────────────────────── */
+    .stInfo {
+        background: rgba(30, 41, 59, 0.4) !important;
+        border: 1px solid rgba(59, 130, 246, 0.2) !important;
+        color: #94A3B8 !important;
+        border-radius: 16px !important;
     }
 </style>
 """, unsafe_allow_html=True)
