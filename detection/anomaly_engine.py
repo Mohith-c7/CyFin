@@ -13,9 +13,10 @@ class AnomalyDetector:
     Detects abnormal price deviations from recent history.
     """
     
-    def __init__(self):
+    def __init__(self, z_threshold=Z_THRESHOLD):
         """Initialize anomaly detector with empty price window."""
         self.price_window = []
+        self.z_threshold = z_threshold
     
     def process_tick(self, tick):
         """
@@ -33,14 +34,14 @@ class AnomalyDetector:
         z_score = 0
         
         # Only detect after collecting sufficient data
-        if len(self.price_window) >= WINDOW_SIZE:
+        if len(self.price_window) >= min(3, WINDOW_SIZE):
             mean = np.mean(self.price_window)
             std = np.std(self.price_window)
             
             if std > 0:
                 z_score = abs((price - mean) / std)
                 
-                if z_score > Z_THRESHOLD:
+                if z_score > self.z_threshold:
                     anomaly = True
                     print("⚠ ANOMALY DETECTED | Z =", round(z_score, 2))
         
