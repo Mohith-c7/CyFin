@@ -12,10 +12,11 @@ from datetime import datetime
 from data_stream.data_loader import load_market_data
 from data_stream.replay_engine import stream_market_data
 from attack.attack_engine import AttackEngine
-from detection.anomaly_engine import AnomalyDetector
+from ml_models.ensemble_detector import EnsembleDetector
 from trust.trust_engine import TrustScoreEngine
 from protection.protection_engine import ProtectionEngine
 from trading.trading_engine_protected import ProtectedTradingEngine
+from database.db_manager import DatabaseManager
 
 # Page configuration
 st.set_page_config(
@@ -163,10 +164,11 @@ if run_button:
             attack_step=attack_step,
             attack_multiplier=attack_multiplier
         )
-        detector = AnomalyDetector(z_threshold=z_threshold)
+        detector = EnsembleDetector()
         trust_engine = TrustScoreEngine()
         protection = ProtectionEngine()
         trader = ProtectedTradingEngine()
+        db = DatabaseManager()
     
     # Load data
     with st.spinner(f"Loading {symbol} market data..."):
@@ -233,17 +235,35 @@ if run_button:
                 unsafe_allow_html=True
             )
         
-        # Detect anomaly
-        detected_tick = detector.process_tick(attacked_tick)
-        is_anomaly = detected_tick.get('anomaly', False)
+        # Detect anomaly using Ensemble ML
+        detector.add_price(price)
+        detection_result = detector.detect(price)
+        is_anomaly = detection_result['is_anomaly']
+        
+        # Bridge detection result to tick for compatibility
+        attacked_tick["anomaly"] = is_anomaly
+        attacked_tick["z_score"] = detection_result['methods']['zscore']['z_score']
         
         if is_anomaly:
             anomalies_detected += 1
+            # Log anomaly to database
+            db.log_anomaly(
+                timestamp=step,
+                symbol=symbol,
+                price=price,
+                severity=detection_result['methods']['zscore']['z_score'],
+                z_score=detection_result['methods']['zscore']['z_score'],
+                detection_method='ensemble',
+                confidence=detection_result['confidence']
+            )
         
         # Calculate trust
-        trust_tick = trust_engine.process_tick(detected_tick)
+        trust_tick = trust_engine.process_tick(attacked_tick)
         trust_score = trust_tick['trust_score']
         trust_level = trust_tick['trust_level']
+        
+        # Log trust score
+        db.log_trust_score(step, symbol, trust_score, trust_level)
         
         # Trading decision
         decision = trader.strategy.decide(price)
@@ -257,6 +277,19 @@ if run_button:
         # Execute trade if allowed
         if final_decision in ["BUY", "SELL"]:
             trader.execute_trade(final_decision, price)
+            
+        # Log trade/activity to database
+        db.log_trade(
+            timestamp=step,
+            symbol=symbol,
+            action=final_decision,
+            price=price,
+            portfolio_value=trader.portfolio.value(price),
+            was_blocked=(final_decision == "BLOCKED")
+        )
+        
+        # Log market data
+        db.log_market_data(step, symbol, price, is_attacked)
         
         # Update tracking
         prices.append(price)
