@@ -330,13 +330,20 @@ Potential enhancements for production deployment:
 
 ---
 
-## Documentation
+---
 
-- [RUN_INSTRUCTIONS.md](RUN_INSTRUCTIONS.md) - Quick start and usage guide
-- [FINAL_DOCUMENTATION.md](FINAL_DOCUMENTATION.md) - Complete technical documentation
-- [STEP1_DOCUMENTATION.md](setup_instructions.md) - Market data streaming setup
-- [STEP2_DOCUMENTATION.md](STEP2_DOCUMENTATION.md) - Trading algorithm details
-- [STEP3_DOCUMENTATION.md](STEP3_DOCUMENTATION.md) - Integrity monitoring specs
+## 🚀 Quick Run Guide
+
+1. **Dashboard**: `streamlit run run_dashboard.py`
+2. **Landing Page**: `cd cyfin-landing && npm install && npm start`
+
+---
+
+## 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👥 Team
+Cybersecurity + Fintech National Hackathon Project
 
 ---
 

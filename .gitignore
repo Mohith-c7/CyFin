@@ -50,6 +50,8 @@ run_all_tests.py
 run_tests_to_file.py
 verify_all_steps.py
 check_setup.py
+*test.py
+*demo.py
 *.pyc
 
 # Frontend (cyfin-landing)
